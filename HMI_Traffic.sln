@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35828.75 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HMI_Traffic", "HMI_Traffic.csproj", "{B7E299E9-4AE2-49C5-BEAB-A7C05C167F0F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7E299E9-4AE2-49C5-BEAB-A7C05C167F0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7E299E9-4AE2-49C5-BEAB-A7C05C167F0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7E299E9-4AE2-49C5-BEAB-A7C05C167F0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7E299E9-4AE2-49C5-BEAB-A7C05C167F0F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ED3D0B7C-A9ED-455F-9EFC-D29CA95E4216}
+	EndGlobalSection
+EndGlobal
