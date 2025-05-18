@@ -33,6 +33,9 @@ namespace HMI_Traffic
                 Image flip2 = pictureBox_LightSouth.Image;
                 flip2.RotateFlip(RotateFlipType.Rotate270FlipXY);
                 pictureBox_LightSouth.Image = flip2;
+                Image flip3 = pictureBoxWE.Image;
+                flip3.RotateFlip(RotateFlipType.Rotate90FlipXY);
+                pictureBoxWE.Image = flip3;
             }
             catch (Exception error)
             {
