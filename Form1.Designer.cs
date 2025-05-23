@@ -55,6 +55,16 @@
             this.pictureBox_LightWest = new System.Windows.Forms.PictureBox();
             this.pictureBox_LightNorth = new System.Windows.Forms.PictureBox();
             this.pictureBox_LightSouth = new System.Windows.Forms.PictureBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.buttonFullStop = new System.Windows.Forms.Button();
+            this.buttonRestart = new System.Windows.Forms.Button();
+            this.buttonManual = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.buttonN = new System.Windows.Forms.Button();
+            this.buttonS = new System.Windows.Forms.Button();
+            this.buttonW = new System.Windows.Forms.Button();
+            this.buttonE = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWE)).BeginInit();
@@ -68,6 +78,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_LightWest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_LightNorth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_LightSouth)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -88,7 +100,7 @@
             this.groupBox1.Size = new System.Drawing.Size(307, 416);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "COM PORT CONTROLS";
+            this.groupBox1.Text = "CONTROLES DE PUERTO";
             // 
             // progressBar1
             // 
@@ -172,6 +184,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.buttonTime);
             this.groupBox2.Controls.Add(this.textBoxTime);
             this.groupBox2.Controls.Add(this.labelNS);
@@ -187,7 +200,7 @@
             this.groupBox2.Size = new System.Drawing.Size(523, 416);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "CAMBIO DE DIRECCIONES";
+            this.groupBox2.Text = "CONTROL AUTOMÁTICO";
             // 
             // buttonTime
             // 
@@ -207,16 +220,16 @@
             // 
             this.textBoxTime.Font = new System.Drawing.Font("Noto Sans", 14.25F);
             this.textBoxTime.Location = new System.Drawing.Point(60, 329);
-            this.textBoxTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxTime.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxTime.Name = "textBoxTime";
-            this.textBoxTime.Size = new System.Drawing.Size(204, 40);
+            this.textBoxTime.Size = new System.Drawing.Size(215, 40);
             this.textBoxTime.TabIndex = 4;
             // 
             // labelNS
             // 
             this.labelNS.AutoSize = true;
             this.labelNS.Font = new System.Drawing.Font("Noto Sans", 24F, System.Drawing.FontStyle.Bold);
-            this.labelNS.Location = new System.Drawing.Point(340, 57);
+            this.labelNS.Location = new System.Drawing.Point(340, 41);
             this.labelNS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNS.Name = "labelNS";
             this.labelNS.Size = new System.Drawing.Size(70, 55);
@@ -227,7 +240,7 @@
             // 
             this.labelWE.AutoSize = true;
             this.labelWE.Font = new System.Drawing.Font("Noto Sans", 24F, System.Drawing.FontStyle.Bold);
-            this.labelWE.Location = new System.Drawing.Point(112, 59);
+            this.labelWE.Location = new System.Drawing.Point(112, 43);
             this.labelWE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelWE.Name = "labelWE";
             this.labelWE.Size = new System.Drawing.Size(70, 55);
@@ -237,7 +250,7 @@
             // pictureBoxWE
             // 
             this.pictureBoxWE.Image = global::HMI_Traffic.Properties.Resources.bidireccional;
-            this.pictureBoxWE.Location = new System.Drawing.Point(60, 130);
+            this.pictureBoxWE.Location = new System.Drawing.Point(60, 104);
             this.pictureBoxWE.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxWE.Name = "pictureBoxWE";
             this.pictureBoxWE.Size = new System.Drawing.Size(173, 160);
@@ -248,7 +261,7 @@
             // pictureBoxNS
             // 
             this.pictureBoxNS.Image = global::HMI_Traffic.Properties.Resources.bidireccional;
-            this.pictureBoxNS.Location = new System.Drawing.Point(287, 130);
+            this.pictureBoxNS.Location = new System.Drawing.Point(287, 104);
             this.pictureBoxNS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxNS.Name = "pictureBoxNS";
             this.pictureBoxNS.Size = new System.Drawing.Size(173, 160);
@@ -281,7 +294,7 @@
             this.pictureBox_PersonNorth.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_PersonNorth.Image = global::HMI_Traffic.Properties.Resources.person;
             this.pictureBox_PersonNorth.Location = new System.Drawing.Point(388, 60);
-            this.pictureBox_PersonNorth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox_PersonNorth.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox_PersonNorth.Name = "pictureBox_PersonNorth";
             this.pictureBox_PersonNorth.Size = new System.Drawing.Size(80, 74);
             this.pictureBox_PersonNorth.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -293,7 +306,7 @@
             this.pictureBox_PersonEast.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_PersonEast.Image = global::HMI_Traffic.Properties.Resources.person;
             this.pictureBox_PersonEast.Location = new System.Drawing.Point(449, 374);
-            this.pictureBox_PersonEast.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox_PersonEast.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox_PersonEast.Name = "pictureBox_PersonEast";
             this.pictureBox_PersonEast.Size = new System.Drawing.Size(80, 74);
             this.pictureBox_PersonEast.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -305,7 +318,7 @@
             this.pictureBox_PersonSouth.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_PersonSouth.Image = global::HMI_Traffic.Properties.Resources.person;
             this.pictureBox_PersonSouth.Location = new System.Drawing.Point(131, 416);
-            this.pictureBox_PersonSouth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox_PersonSouth.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox_PersonSouth.Name = "pictureBox_PersonSouth";
             this.pictureBox_PersonSouth.Size = new System.Drawing.Size(80, 74);
             this.pictureBox_PersonSouth.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -317,7 +330,7 @@
             this.pictureBox_PersonWest.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_PersonWest.Image = global::HMI_Traffic.Properties.Resources.person;
             this.pictureBox_PersonWest.Location = new System.Drawing.Point(67, 106);
-            this.pictureBox_PersonWest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox_PersonWest.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox_PersonWest.Name = "pictureBox_PersonWest";
             this.pictureBox_PersonWest.Size = new System.Drawing.Size(80, 74);
             this.pictureBox_PersonWest.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -329,7 +342,7 @@
             this.pictureBox_LightEast.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_LightEast.Image = global::HMI_Traffic.Properties.Resources.lightOff;
             this.pictureBox_LightEast.Location = new System.Drawing.Point(349, 260);
-            this.pictureBox_LightEast.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox_LightEast.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox_LightEast.Name = "pictureBox_LightEast";
             this.pictureBox_LightEast.Size = new System.Drawing.Size(120, 111);
             this.pictureBox_LightEast.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -341,7 +354,7 @@
             this.pictureBox_LightWest.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_LightWest.Image = global::HMI_Traffic.Properties.Resources.lightOff;
             this.pictureBox_LightWest.Location = new System.Drawing.Point(128, 170);
-            this.pictureBox_LightWest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox_LightWest.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox_LightWest.Name = "pictureBox_LightWest";
             this.pictureBox_LightWest.Size = new System.Drawing.Size(120, 111);
             this.pictureBox_LightWest.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -353,7 +366,7 @@
             this.pictureBox_LightNorth.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_LightNorth.Image = global::HMI_Traffic.Properties.Resources.lightOff;
             this.pictureBox_LightNorth.Location = new System.Drawing.Point(284, 117);
-            this.pictureBox_LightNorth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox_LightNorth.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox_LightNorth.Name = "pictureBox_LightNorth";
             this.pictureBox_LightNorth.Size = new System.Drawing.Size(120, 111);
             this.pictureBox_LightNorth.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -365,12 +378,147 @@
             this.pictureBox_LightSouth.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_LightSouth.Image = global::HMI_Traffic.Properties.Resources.lightOff;
             this.pictureBox_LightSouth.Location = new System.Drawing.Point(195, 324);
-            this.pictureBox_LightSouth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox_LightSouth.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox_LightSouth.Name = "pictureBox_LightSouth";
             this.pictureBox_LightSouth.Size = new System.Drawing.Size(120, 111);
             this.pictureBox_LightSouth.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox_LightSouth.TabIndex = 2;
             this.pictureBox_LightSouth.TabStop = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.buttonE);
+            this.groupBox3.Controls.Add(this.buttonW);
+            this.groupBox3.Controls.Add(this.buttonS);
+            this.groupBox3.Controls.Add(this.buttonN);
+            this.groupBox3.Controls.Add(this.buttonManual);
+            this.groupBox3.Font = new System.Drawing.Font("Noto Sans", 13.2F, System.Drawing.FontStyle.Bold);
+            this.groupBox3.ForeColor = System.Drawing.Color.White;
+            this.groupBox3.Location = new System.Drawing.Point(24, 474);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(858, 338);
+            this.groupBox3.TabIndex = 3;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "CONTROL MANUAL";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.buttonRestart);
+            this.groupBox4.Controls.Add(this.buttonFullStop);
+            this.groupBox4.Font = new System.Drawing.Font("Noto Sans", 13.2F, System.Drawing.FontStyle.Bold);
+            this.groupBox4.ForeColor = System.Drawing.Color.White;
+            this.groupBox4.Location = new System.Drawing.Point(913, 605);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(599, 207);
+            this.groupBox4.TabIndex = 4;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "ALTO TOTAL";
+            // 
+            // buttonFullStop
+            // 
+            this.buttonFullStop.BackColor = System.Drawing.Color.Red;
+            this.buttonFullStop.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonFullStop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonFullStop.Font = new System.Drawing.Font("Noto Sans", 16.2F, System.Drawing.FontStyle.Bold);
+            this.buttonFullStop.ForeColor = System.Drawing.Color.White;
+            this.buttonFullStop.Location = new System.Drawing.Point(58, 66);
+            this.buttonFullStop.Name = "buttonFullStop";
+            this.buttonFullStop.Size = new System.Drawing.Size(220, 92);
+            this.buttonFullStop.TabIndex = 0;
+            this.buttonFullStop.Text = "ALTO TOTAL";
+            this.buttonFullStop.UseVisualStyleBackColor = false;
+            // 
+            // buttonRestart
+            // 
+            this.buttonRestart.BackColor = System.Drawing.Color.Blue;
+            this.buttonRestart.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonRestart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonRestart.Font = new System.Drawing.Font("Noto Sans", 16.2F, System.Drawing.FontStyle.Bold);
+            this.buttonRestart.ForeColor = System.Drawing.Color.White;
+            this.buttonRestart.Location = new System.Drawing.Point(332, 66);
+            this.buttonRestart.Name = "buttonRestart";
+            this.buttonRestart.Size = new System.Drawing.Size(220, 92);
+            this.buttonRestart.TabIndex = 1;
+            this.buttonRestart.Text = "REINICIO";
+            this.buttonRestart.UseVisualStyleBackColor = false;
+            // 
+            // buttonManual
+            // 
+            this.buttonManual.BackColor = System.Drawing.Color.DarkOrange;
+            this.buttonManual.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonManual.Font = new System.Drawing.Font("Noto Sans", 13.8F, System.Drawing.FontStyle.Bold);
+            this.buttonManual.Location = new System.Drawing.Point(73, 131);
+            this.buttonManual.Name = "buttonManual";
+            this.buttonManual.Size = new System.Drawing.Size(225, 77);
+            this.buttonManual.TabIndex = 0;
+            this.buttonManual.Text = "HABILITAR";
+            this.buttonManual.UseVisualStyleBackColor = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Noto Sans", 12F);
+            this.label3.Location = new System.Drawing.Point(55, 298);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(220, 27);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Tiempo entre cambios";
+            // 
+            // buttonN
+            // 
+            this.buttonN.BackColor = System.Drawing.Color.White;
+            this.buttonN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonN.Font = new System.Drawing.Font("Noto Sans", 48F, System.Drawing.FontStyle.Bold);
+            this.buttonN.ForeColor = System.Drawing.Color.Black;
+            this.buttonN.Location = new System.Drawing.Point(525, 52);
+            this.buttonN.Name = "buttonN";
+            this.buttonN.Size = new System.Drawing.Size(120, 120);
+            this.buttonN.TabIndex = 1;
+            this.buttonN.Text = "N";
+            this.buttonN.UseVisualStyleBackColor = false;
+            // 
+            // buttonS
+            // 
+            this.buttonS.BackColor = System.Drawing.Color.White;
+            this.buttonS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonS.Font = new System.Drawing.Font("Noto Sans", 48F, System.Drawing.FontStyle.Bold);
+            this.buttonS.ForeColor = System.Drawing.Color.Black;
+            this.buttonS.Location = new System.Drawing.Point(525, 178);
+            this.buttonS.Name = "buttonS";
+            this.buttonS.Size = new System.Drawing.Size(120, 120);
+            this.buttonS.TabIndex = 2;
+            this.buttonS.Text = "S";
+            this.buttonS.UseVisualStyleBackColor = false;
+            // 
+            // buttonW
+            // 
+            this.buttonW.BackColor = System.Drawing.Color.White;
+            this.buttonW.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonW.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonW.Font = new System.Drawing.Font("Noto Sans", 48F, System.Drawing.FontStyle.Bold);
+            this.buttonW.ForeColor = System.Drawing.Color.Black;
+            this.buttonW.Location = new System.Drawing.Point(399, 112);
+            this.buttonW.Name = "buttonW";
+            this.buttonW.Size = new System.Drawing.Size(120, 120);
+            this.buttonW.TabIndex = 3;
+            this.buttonW.Text = "O";
+            this.buttonW.UseVisualStyleBackColor = false;
+            // 
+            // buttonE
+            // 
+            this.buttonE.BackColor = System.Drawing.Color.White;
+            this.buttonE.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonE.Font = new System.Drawing.Font("Noto Sans", 48F, System.Drawing.FontStyle.Bold);
+            this.buttonE.ForeColor = System.Drawing.Color.Black;
+            this.buttonE.Location = new System.Drawing.Point(651, 112);
+            this.buttonE.Name = "buttonE";
+            this.buttonE.Size = new System.Drawing.Size(120, 120);
+            this.buttonE.TabIndex = 4;
+            this.buttonE.Text = "E";
+            this.buttonE.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
@@ -378,6 +526,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(1540, 839);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
@@ -404,6 +554,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_LightWest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_LightNorth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_LightSouth)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -435,6 +587,16 @@
         private System.Windows.Forms.Label labelNS;
         private System.Windows.Forms.TextBox textBoxTime;
         private System.Windows.Forms.Button buttonTime;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button buttonFullStop;
+        private System.Windows.Forms.Button buttonRestart;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button buttonManual;
+        private System.Windows.Forms.Button buttonE;
+        private System.Windows.Forms.Button buttonW;
+        private System.Windows.Forms.Button buttonS;
+        private System.Windows.Forms.Button buttonN;
     }
 }
 

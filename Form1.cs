@@ -22,7 +22,7 @@ namespace HMI_Traffic
         {
             try
             {
-                //disableComponents();
+                disableComponents();
                 string[] ports = SerialPort.GetPortNames();
                 comboBoxPort.DataSource = ports;
                 string[] rates = { "9600", "19200", "31250", "57600", "115200" };
@@ -79,11 +79,11 @@ namespace HMI_Traffic
                     buttonRefresh.Enabled = false;
                     comboBoxBaud.Enabled = false;
                     comboBoxPort.Enabled = false;
-                    //enableComponents();
+                    enableComponents();
                 }
                 else
                 {
-                    //disableComponents();
+                    disableComponents();
                     progressBar1.Value = 0;
                     buttonConnect.Text = "CONECTAR";
                     buttonConnect.BackColor = Color.FromArgb(0, 200, 0);
@@ -97,6 +97,26 @@ namespace HMI_Traffic
             {
                 MessageBox.Show(error.Message);
             }
+        }
+
+        private void disableComponents()
+        {
+            panel1.Visible = false;
+            groupBox2.Enabled = false;
+            groupBox3.Enabled = false;
+            groupBox4.Enabled = false;
+        }
+
+        private void enableComponents()
+        {
+            panel1.Visible = true;
+            groupBox2.Enabled = true;
+            groupBox3.Enabled = true;
+            groupBox4.Enabled = true;
+            buttonN.Enabled = false;
+            buttonS.Enabled = false;
+            buttonE.Enabled = false;
+            buttonW.Enabled = false;
         }
     }
 }
