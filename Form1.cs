@@ -27,12 +27,6 @@ namespace HMI_Traffic
                 comboBoxPort.DataSource = ports;
                 string[] rates = { "9600", "19200", "31250", "57600", "115200" };
                 comboBoxBaud.DataSource = rates;
-                Image flip = pictureBox_LightNorth.Image;
-                flip.RotateFlip(RotateFlipType.Rotate90FlipXY);
-                pictureBox_LightNorth.Image = flip;
-                Image flip2 = pictureBox_LightSouth.Image;
-                flip2.RotateFlip(RotateFlipType.Rotate270FlipXY);
-                pictureBox_LightSouth.Image = flip2;
                 Image flip3 = pictureBoxWE.Image;
                 flip3.RotateFlip(RotateFlipType.Rotate90FlipXY);
                 pictureBoxWE.Image = flip3;
@@ -40,6 +34,61 @@ namespace HMI_Traffic
             catch (Exception error)
             {
                 MessageBox.Show(error.Message);
+            }
+        }
+
+        public class Globals
+        {
+            private static int _seconds = 30;
+            public static int Seconds
+            {
+                get
+                {
+                    return _seconds;
+                }
+                set
+                {
+                    _seconds = value;
+                }
+            }
+
+            private static bool _ns = false;
+            public static bool Ns
+            {
+                get
+                {
+                    return _ns;
+                }
+                set
+                {
+                    _ns = value;
+                }
+            }
+
+            private static bool _we = false;
+            public static bool We
+            {
+                get
+                {
+                    return _we;
+                }
+                set
+                {
+                    _we = value;
+                }
+            }
+
+            private static int _timer = 10;
+            public static int Timer
+            {
+                get
+                {
+                    return _timer;
+                }
+                set
+                {
+                    _timer = value;
+                }
             }
         }
 
@@ -105,6 +154,16 @@ namespace HMI_Traffic
             groupBox2.Enabled = false;
             groupBox3.Enabled = false;
             groupBox4.Enabled = false;
+            timerSeconds.Enabled = false;
+            pictureBox_LightWest.Image = Properties.Resources.lightOff;
+            pictureBox_LightEast.Image = Properties.Resources.lightOff;
+            pictureBox_LightNorth.Image = Properties.Resources.lightOff;
+            pictureBox_LightSouth.Image = Properties.Resources.lightOff;
+            labelWE.Text = "--";
+            labelNS.Text = "--";
+            Globals.Seconds = Globals.Timer;
+            Globals.Ns = false;
+            Globals.We = false;
         }
 
         private void enableComponents()
@@ -117,6 +176,264 @@ namespace HMI_Traffic
             buttonS.Enabled = false;
             buttonE.Enabled = false;
             buttonW.Enabled = false;
+            buttonRestart.Enabled = false;
+            timerSeconds.Enabled = true;
+            labelNS.Text = "0";
+            pictureBox_LightWest.Image = Properties.Resources.green;
+            pictureBox_LightEast.Image = Properties.Resources.green;
+            pictureBox_LightNorth.Image = Properties.Resources.red;
+            Image flip = pictureBox_LightNorth.Image;
+            flip.RotateFlip(RotateFlipType.Rotate90FlipXY);
+            pictureBox_LightNorth.Image = flip;
+            pictureBox_LightSouth.Image = Properties.Resources.red;
+            flip = pictureBox_LightSouth.Image;
+            flip.RotateFlip(RotateFlipType.Rotate270FlipXY);
+            pictureBox_LightSouth.Image = flip;
+            timerSeconds.Enabled = true;
+            Globals.Seconds = Globals.Timer;
+            int timeSet = Globals.Seconds;
+            labelWE.Text = Convert.ToString(timeSet);
+            Globals.We = true;
+        }
+
+        private void timerSeconds_Tick(object sender, EventArgs e)
+        {
+            Globals.Seconds = Globals.Seconds - 1;
+            if (Globals.Seconds == 0)
+            {
+                pictureBox_LightWest.Image = Properties.Resources.yellow;
+                pictureBox_LightEast.Image = Properties.Resources.yellow;
+                pictureBox_LightNorth.Image = Properties.Resources.yellow;
+                Image flip = pictureBox_LightNorth.Image;
+                flip.RotateFlip(RotateFlipType.Rotate90FlipXY);
+                pictureBox_LightNorth.Image = flip;
+                pictureBox_LightSouth.Image = Properties.Resources.yellow;
+                flip = pictureBox_LightSouth.Image;
+                flip.RotateFlip(RotateFlipType.Rotate270FlipXY);
+                pictureBox_LightSouth.Image = flip;
+            }
+            if ( Globals.Seconds < 0 )
+            {
+                Globals.Seconds = Globals.Timer;
+                if (Globals.We == true)
+                {
+                    Globals.We = false;
+                    Globals.Ns = true;
+                }
+                else
+                {
+                    Globals.We = true;
+                    Globals.Ns = false;
+                }
+            }
+            int timeSet = Globals.Seconds;
+            if (Globals.We == true)
+            {
+                labelWE.Text = Convert.ToString(timeSet);
+                if (Globals.Seconds != 0)
+                {
+                    pictureBox_LightWest.Image = Properties.Resources.green;
+                    pictureBox_LightEast.Image = Properties.Resources.green;
+                    pictureBox_LightNorth.Image = Properties.Resources.red;
+                    Image flip = pictureBox_LightNorth.Image;
+                    flip.RotateFlip(RotateFlipType.Rotate90FlipXY);
+                    pictureBox_LightNorth.Image = flip;
+                    pictureBox_LightSouth.Image = Properties.Resources.red;
+                    flip = pictureBox_LightSouth.Image;
+                    flip.RotateFlip(RotateFlipType.Rotate270FlipXY);
+                    pictureBox_LightSouth.Image = flip;
+                }
+            }
+            else if (Globals.Ns == true)
+            {
+                labelNS.Text = Convert.ToString(timeSet);
+                if (Globals.Seconds != 0)
+                {
+                    pictureBox_LightWest.Image = Properties.Resources.red;
+                    pictureBox_LightEast.Image = Properties.Resources.red;
+                    pictureBox_LightNorth.Image = Properties.Resources.green;
+                    Image flip = pictureBox_LightNorth.Image;
+                    flip.RotateFlip(RotateFlipType.Rotate90FlipXY);
+                    pictureBox_LightNorth.Image = flip;
+                    pictureBox_LightSouth.Image = Properties.Resources.green;
+                    flip = pictureBox_LightSouth.Image;
+                    flip.RotateFlip(RotateFlipType.Rotate270FlipXY);
+                    pictureBox_LightSouth.Image = flip;
+                }
+            }
+        }
+
+        private void buttonTime_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBoxTime.Text != "")
+                {
+                    String newTime = textBoxTime.Text;
+                    Globals.Timer = int.Parse(newTime);
+                    textBoxTime.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Introduce un valor en el campo de Ciclo (segundos)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }
+
+        private void buttonFullStop_Click(object sender, EventArgs e)
+        {
+            groupBox2.Enabled = false;
+            groupBox3.Enabled = false;
+            timerSeconds.Enabled = false;
+            pictureBox_LightWest.Image = Properties.Resources.red;
+            pictureBox_LightEast.Image = Properties.Resources.red;
+            pictureBox_LightNorth.Image = Properties.Resources.red;
+            Image flip = pictureBox_LightNorth.Image;
+            flip.RotateFlip(RotateFlipType.Rotate90FlipXY);
+            pictureBox_LightNorth.Image = flip;
+            pictureBox_LightSouth.Image = Properties.Resources.red;
+            flip = pictureBox_LightSouth.Image;
+            flip.RotateFlip(RotateFlipType.Rotate270FlipXY);
+            pictureBox_LightSouth.Image = flip;
+            Globals.We = false;
+            Globals.Ns = false;
+            buttonRestart.Enabled = true;
+            buttonFullStop.Enabled = false;
+        }
+
+        private void buttonRestart_Click(object sender, EventArgs e)
+        {
+            restart();
+        }
+
+        private void restart()
+        {
+            enableComponents();
+            buttonRestart.Enabled = false;
+            buttonFullStop.Enabled = true;
+            labelNS.Text = "0";
+        }
+
+        private void buttonManual_Click(object sender, EventArgs e)
+        {
+            if (buttonManual.Text == "HABILITAR")
+            {
+                groupBox2.Enabled = false;
+                labelNS.Text = "--";
+                labelWE.Text = "--";
+                groupBox4.Enabled = false;
+                timerSeconds.Enabled = false;
+                buttonManual.Text = "DESACTIVAR";
+                buttonManual.BackColor = Color.Purple;
+                buttonN.Enabled = true;
+                buttonN.ForeColor = Color.White;
+                buttonN.BackColor = Color.Red;
+                buttonS.Enabled = true;
+                buttonS.ForeColor = Color.White;
+                buttonS.BackColor = Color.Red;
+                buttonW.Enabled = true;
+                buttonW.ForeColor = Color.White;
+                buttonW.BackColor = Color.Red;
+                buttonE.Enabled = true;
+                buttonE.ForeColor = Color.White;
+                buttonE.BackColor = Color.Red;
+                pictureBox_LightWest.Image = Properties.Resources.red;
+                pictureBox_LightEast.Image = Properties.Resources.red;
+                pictureBox_LightNorth.Image = Properties.Resources.red;
+                Image flip = pictureBox_LightNorth.Image;
+                flip.RotateFlip(RotateFlipType.Rotate90FlipXY);
+                pictureBox_LightNorth.Image = flip;
+                pictureBox_LightSouth.Image = Properties.Resources.red;
+                flip = pictureBox_LightSouth.Image;
+                flip.RotateFlip(RotateFlipType.Rotate270FlipXY);
+                pictureBox_LightSouth.Image = flip;
+            }
+            else
+            {
+                restart();
+                buttonManual.Text = "HABILITAR";
+                buttonManual.BackColor = Color.DarkOrange;
+                buttonN.ForeColor = Color.Black;
+                buttonN.BackColor = Color.White;
+                buttonS.ForeColor = Color.Black;
+                buttonS.BackColor = Color.White;
+                buttonE.ForeColor = Color.Black;
+                buttonE.BackColor = Color.White;
+                buttonW.ForeColor = Color.Black;
+                buttonW.BackColor = Color.White;
+            }
+        }
+
+        private void buttonN_Click(object sender, EventArgs e)
+        {
+            if (buttonN.BackColor == Color.Red)
+            {
+                buttonN.BackColor = Color.Green;
+                pictureBox_LightNorth.Image = Properties.Resources.green;
+                Image flip = pictureBox_LightNorth.Image;
+                flip.RotateFlip(RotateFlipType.Rotate90FlipXY);
+                pictureBox_LightNorth.Image = flip;
+            }
+            else
+            {
+                buttonN.BackColor = Color.Red;
+                pictureBox_LightNorth.Image = Properties.Resources.red;
+                Image flip = pictureBox_LightNorth.Image;
+                flip.RotateFlip(RotateFlipType.Rotate90FlipXY);
+                pictureBox_LightNorth.Image = flip;
+            }
+        }
+
+        private void buttonS_Click(object sender, EventArgs e)
+        {
+            if (buttonS.BackColor == Color.Red)
+            {
+                buttonS.BackColor = Color.Green;
+                pictureBox_LightSouth.Image = Properties.Resources.green;
+                Image flip = pictureBox_LightSouth.Image;
+                flip.RotateFlip(RotateFlipType.Rotate270FlipXY);
+                pictureBox_LightSouth.Image = flip;
+            }
+            else
+            {
+                buttonS.BackColor = Color.Red;
+                pictureBox_LightSouth.Image = Properties.Resources.red;
+                Image flip = pictureBox_LightSouth.Image;
+                flip.RotateFlip(RotateFlipType.Rotate270FlipXY);
+                pictureBox_LightSouth.Image = flip;
+            }
+        }
+
+        private void buttonW_Click(object sender, EventArgs e)
+        {
+            if (buttonW.BackColor == Color.Red)
+            {
+                buttonW.BackColor = Color.Green;
+                pictureBox_LightWest.Image = Properties.Resources.green;
+            }
+            else
+            {
+                buttonW.BackColor = Color.Red;
+                pictureBox_LightWest.Image = Properties.Resources.red;
+            }
+        }
+
+        private void buttonE_Click(object sender, EventArgs e)
+        {
+            if (buttonE.BackColor == Color.Red)
+            {
+                buttonE.BackColor = Color.Green;
+                pictureBox_LightEast.Image = Properties.Resources.green;
+            }
+            else
+            {
+                buttonE.BackColor = Color.Red;
+                pictureBox_LightEast.Image = Properties.Resources.red;
+            }
         }
     }
 }
