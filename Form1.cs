@@ -155,6 +155,7 @@ namespace HMI_Traffic
             groupBox3.Enabled = false;
             groupBox4.Enabled = false;
             timerSeconds.Enabled = false;
+            turnOffLights();
             pictureBox_LightWest.Image = Properties.Resources.lightOff;
             pictureBox_LightEast.Image = Properties.Resources.lightOff;
             pictureBox_LightNorth.Image = Properties.Resources.lightOff;
@@ -179,13 +180,18 @@ namespace HMI_Traffic
             buttonRestart.Enabled = false;
             timerSeconds.Enabled = true;
             labelNS.Text = "0";
+            turnOffLights();
             pictureBox_LightWest.Image = Properties.Resources.green;
+            serialPort1.WriteLine("$WGon");
             pictureBox_LightEast.Image = Properties.Resources.green;
+            serialPort1.WriteLine("$EGon");
             pictureBox_LightNorth.Image = Properties.Resources.red;
+            serialPort1.WriteLine("$NRon");
             Image flip = pictureBox_LightNorth.Image;
             flip.RotateFlip(RotateFlipType.Rotate90FlipXY);
             pictureBox_LightNorth.Image = flip;
             pictureBox_LightSouth.Image = Properties.Resources.red;
+            serialPort1.WriteLine("$SRon");
             flip = pictureBox_LightSouth.Image;
             flip.RotateFlip(RotateFlipType.Rotate270FlipXY);
             pictureBox_LightSouth.Image = flip;
@@ -198,16 +204,24 @@ namespace HMI_Traffic
 
         private void timerSeconds_Tick(object sender, EventArgs e)
         {
+            if (Globals.Seconds == Globals.Timer)
+            {
+                turnOffLights();
+            }
             Globals.Seconds = Globals.Seconds - 1;
             if (Globals.Seconds == 0)
             {
                 pictureBox_LightWest.Image = Properties.Resources.yellow;
+                serialPort1.WriteLine("$WYon");
                 pictureBox_LightEast.Image = Properties.Resources.yellow;
+                serialPort1.WriteLine("$EYon");
                 pictureBox_LightNorth.Image = Properties.Resources.yellow;
+                serialPort1.WriteLine("$NYon");
                 Image flip = pictureBox_LightNorth.Image;
                 flip.RotateFlip(RotateFlipType.Rotate90FlipXY);
                 pictureBox_LightNorth.Image = flip;
                 pictureBox_LightSouth.Image = Properties.Resources.yellow;
+                serialPort1.WriteLine("$SYon");
                 flip = pictureBox_LightSouth.Image;
                 flip.RotateFlip(RotateFlipType.Rotate270FlipXY);
                 pictureBox_LightSouth.Image = flip;
@@ -232,13 +246,18 @@ namespace HMI_Traffic
                 labelWE.Text = Convert.ToString(timeSet);
                 if (Globals.Seconds != 0)
                 {
+                    //turnOffLights();
                     pictureBox_LightWest.Image = Properties.Resources.green;
+                    serialPort1.WriteLine("WGon");
                     pictureBox_LightEast.Image = Properties.Resources.green;
+                    serialPort1.WriteLine("EGon");
                     pictureBox_LightNorth.Image = Properties.Resources.red;
+                    serialPort1.WriteLine("NRon");
                     Image flip = pictureBox_LightNorth.Image;
                     flip.RotateFlip(RotateFlipType.Rotate90FlipXY);
                     pictureBox_LightNorth.Image = flip;
                     pictureBox_LightSouth.Image = Properties.Resources.red;
+                    serialPort1.WriteLine("SRon");
                     flip = pictureBox_LightSouth.Image;
                     flip.RotateFlip(RotateFlipType.Rotate270FlipXY);
                     pictureBox_LightSouth.Image = flip;
@@ -249,6 +268,11 @@ namespace HMI_Traffic
                 labelNS.Text = Convert.ToString(timeSet);
                 if (Globals.Seconds != 0)
                 {
+                    //turnOffLights();
+                    serialPort1.WriteLine("WRon");
+                    serialPort1.WriteLine("ERon");
+                    serialPort1.WriteLine("NGon");
+                    serialPort1.WriteLine("SGon");
                     pictureBox_LightWest.Image = Properties.Resources.red;
                     pictureBox_LightEast.Image = Properties.Resources.red;
                     pictureBox_LightNorth.Image = Properties.Resources.green;
@@ -289,6 +313,11 @@ namespace HMI_Traffic
             groupBox2.Enabled = false;
             groupBox3.Enabled = false;
             timerSeconds.Enabled = false;
+            turnOffLights();
+            serialPort1.WriteLine("WRon");
+            serialPort1.WriteLine("ERon");
+            serialPort1.WriteLine("NRon");
+            serialPort1.WriteLine("SRon");
             pictureBox_LightWest.Image = Properties.Resources.red;
             pictureBox_LightEast.Image = Properties.Resources.red;
             pictureBox_LightNorth.Image = Properties.Resources.red;
@@ -341,6 +370,11 @@ namespace HMI_Traffic
                 buttonE.Enabled = true;
                 buttonE.ForeColor = Color.White;
                 buttonE.BackColor = Color.Red;
+                turnOffLights();
+                serialPort1.WriteLine("$WRon");
+                serialPort1.WriteLine("$ERon");
+                serialPort1.WriteLine("$NRon");
+                serialPort1.WriteLine("$SRon");
                 pictureBox_LightWest.Image = Properties.Resources.red;
                 pictureBox_LightEast.Image = Properties.Resources.red;
                 pictureBox_LightNorth.Image = Properties.Resources.red;
@@ -373,6 +407,9 @@ namespace HMI_Traffic
             if (buttonN.BackColor == Color.Red)
             {
                 buttonN.BackColor = Color.Green;
+                serialPort1.WriteLine("$NRoff");
+                serialPort1.WriteLine("$NYoff");
+                serialPort1.WriteLine("$NGon");
                 pictureBox_LightNorth.Image = Properties.Resources.green;
                 Image flip = pictureBox_LightNorth.Image;
                 flip.RotateFlip(RotateFlipType.Rotate90FlipXY);
@@ -381,6 +418,9 @@ namespace HMI_Traffic
             else
             {
                 buttonN.BackColor = Color.Red;
+                serialPort1.WriteLine("$NRon");
+                serialPort1.WriteLine("$NYoff");
+                serialPort1.WriteLine("$NGoff");
                 pictureBox_LightNorth.Image = Properties.Resources.red;
                 Image flip = pictureBox_LightNorth.Image;
                 flip.RotateFlip(RotateFlipType.Rotate90FlipXY);
@@ -393,6 +433,9 @@ namespace HMI_Traffic
             if (buttonS.BackColor == Color.Red)
             {
                 buttonS.BackColor = Color.Green;
+                serialPort1.WriteLine("$SRoff");
+                serialPort1.WriteLine("$SYoff");
+                serialPort1.WriteLine("$SGon");
                 pictureBox_LightSouth.Image = Properties.Resources.green;
                 Image flip = pictureBox_LightSouth.Image;
                 flip.RotateFlip(RotateFlipType.Rotate270FlipXY);
@@ -401,6 +444,9 @@ namespace HMI_Traffic
             else
             {
                 buttonS.BackColor = Color.Red;
+                serialPort1.WriteLine("$SRon");
+                serialPort1.WriteLine("$SYoff");
+                serialPort1.WriteLine("$SGoff");
                 pictureBox_LightSouth.Image = Properties.Resources.red;
                 Image flip = pictureBox_LightSouth.Image;
                 flip.RotateFlip(RotateFlipType.Rotate270FlipXY);
@@ -413,11 +459,17 @@ namespace HMI_Traffic
             if (buttonW.BackColor == Color.Red)
             {
                 buttonW.BackColor = Color.Green;
+                serialPort1.WriteLine("$WRoff");
+                serialPort1.WriteLine("$WYoff");
+                serialPort1.WriteLine("$WGon");
                 pictureBox_LightWest.Image = Properties.Resources.green;
             }
             else
             {
                 buttonW.BackColor = Color.Red;
+                serialPort1.WriteLine("$WRon");
+                serialPort1.WriteLine("$WYoff");
+                serialPort1.WriteLine("$WGoff");
                 pictureBox_LightWest.Image = Properties.Resources.red;
             }
         }
@@ -427,12 +479,37 @@ namespace HMI_Traffic
             if (buttonE.BackColor == Color.Red)
             {
                 buttonE.BackColor = Color.Green;
+                serialPort1.WriteLine("$ERoff");
+                serialPort1.WriteLine("$EYoff");
+                serialPort1.WriteLine("$EGon");
                 pictureBox_LightEast.Image = Properties.Resources.green;
             }
             else
             {
                 buttonE.BackColor = Color.Red;
+                serialPort1.WriteLine("$ERon");
+                serialPort1.WriteLine("$EYoff");
+                serialPort1.WriteLine("$EGoff");
                 pictureBox_LightEast.Image = Properties.Resources.red;
+            }
+        }
+
+        private void turnOffLights()
+        {
+            if (serialPort1.IsOpen)
+            {
+                serialPort1.WriteLine("$WRoff");
+                serialPort1.WriteLine("$WYoff");
+                serialPort1.WriteLine("$WGoff");
+                serialPort1.WriteLine("$ERoff");
+                serialPort1.WriteLine("$EYoff");
+                serialPort1.WriteLine("$EGoff");
+                serialPort1.WriteLine("$NRoff");
+                serialPort1.WriteLine("$NYoff");
+                serialPort1.WriteLine("$NGoff");
+                serialPort1.WriteLine("$SRoff");
+                serialPort1.WriteLine("$SYoff");
+                serialPort1.WriteLine("$SGoff");
             }
         }
     }
